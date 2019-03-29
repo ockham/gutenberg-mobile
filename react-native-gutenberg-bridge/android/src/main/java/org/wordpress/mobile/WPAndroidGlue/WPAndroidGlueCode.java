@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.MutableContextWrapper;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -298,6 +299,21 @@ public class WPAndroidGlueCode {
                             }
                         }
                     });
+        }
+    }
+
+    public void respondToImportantConfigurationChanges(Configuration newConfig) {
+        if (mReactInstanceManager == null || mReactInstanceManager.getCurrentReactContext() == null) {
+            // just bail. RN view is not ready anyway
+            return;
+        }
+
+        Configuration currentConfiguration =
+                mReactInstanceManager.getCurrentReactContext().getResources().getConfiguration();
+
+        // recreate React context if system font size has changed
+        if (currentConfiguration.fontScale != newConfig.fontScale) {
+            mReactInstanceManager.recreateReactContextInBackground();
         }
     }
 
