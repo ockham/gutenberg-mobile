@@ -1,4 +1,6 @@
 before_install:
+   - whoami
+   - apt install sudo
    - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
    - yes | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-27"
    - yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;27.0.3"
