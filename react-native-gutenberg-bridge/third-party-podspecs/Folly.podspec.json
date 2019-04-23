@@ -12,6 +12,7 @@
     "tag": "v2018.10.22.00"
   },
   "module_name": "folly",
+  "static_framework": true,
   "dependencies": {
     "boost-for-react-native": [
 

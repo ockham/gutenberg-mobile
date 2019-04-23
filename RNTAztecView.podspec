@@ -18,5 +18,6 @@ Pod::Spec.new do |s|
 						'HEADER_SEARCH_PATHS' => '/usr/include/libxml2'}
   s.dependency         'React'
   s.dependency         'WordPress-Aztec-iOS'
+  s.static_framework = true
 
 end

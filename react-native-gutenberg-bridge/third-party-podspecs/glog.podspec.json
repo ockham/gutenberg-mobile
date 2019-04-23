@@ -13,6 +13,7 @@
     "git": "https://github.com/google/glog.git",
     "tag": "v0.3.5"
   },
+  "static_framework": true,
   "module_name": "glog",
   "header_dir": "glog",
   "source_files": [

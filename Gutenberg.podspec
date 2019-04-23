@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/wordpress-mobile/gutenberg-mobile.git' }
   s.source_files = 'react-native-gutenberg-bridge/ios/*.{h,m,swift}'
   s.requires_arc = true
+  s.static_framework = true
   s.preserve_paths = 'bundle/ios/*'
 
   s.dependency 'React/Core', react_native_version

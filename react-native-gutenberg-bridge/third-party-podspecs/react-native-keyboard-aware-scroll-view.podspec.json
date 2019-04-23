@@ -14,6 +14,7 @@
   },
   "source_files": "ios/RNKeyboardAwareScrollView/*.{h,m}",
   "preserve_paths": "**/*.js",
+  "static_framework": true,
   "dependencies": {
     "React": [
 

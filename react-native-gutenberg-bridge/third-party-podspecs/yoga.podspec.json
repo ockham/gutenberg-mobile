@@ -15,6 +15,7 @@
   },
   "module_name": "yoga",
   "requires_arc": false,
+  "static_framework": true,
   "compiler_flags": [
     "-fno-omit-frame-pointer",
     "-fexceptions",
