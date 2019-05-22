@@ -389,8 +389,13 @@ public class ReactAztecText extends AztecText {
     private boolean onBackspace() {
         int cursorPositionStart = getSelectionStart();
         int cursorPositionEnd = getSelectionEnd();
+
+        boolean hasSelection = cursorPositionStart != cursorPositionEnd;
+        boolean isCaretAtStart = cursorPositionStart == 0;
+
         // Make sure to report backspace at the beginning only, with no selection.
-        if (cursorPositionStart != 0 || cursorPositionEnd != 0) {
+        // or when a newline precedes the caret
+        if (hasSelection || !(isCaretAtStart || isNewLineBeforeCaret())) {
             return false;
         }
 
@@ -404,6 +409,18 @@ public class ReactAztecText extends AztecText {
                 new ReactAztecBackspaceEvent(getId(), content, cursorPositionStart, cursorPositionEnd)
         );
         return true;
+    }
+
+    private boolean isNewLineBeforeCaret() {
+        int caretStart = getSelectionStart();
+        CharSequence text = getText();
+
+        if (text != null && 0 < caretStart) {
+            char precedingCharacter = text.charAt(caretStart - 1);
+            return precedingCharacter == '\n';
+        } else {
+            return false;
+        }
     }
 
     /**
