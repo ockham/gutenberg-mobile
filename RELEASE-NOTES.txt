@@ -1,3 +1,7 @@
+1.19.0
+------
+* Fix bug where image placeholders would sometimes not be shown
+
 1.18.0
 ------
 * [iOS] Added native fullscreen preview when clicking image from Image Block
